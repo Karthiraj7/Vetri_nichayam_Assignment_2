@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Rock,Paper ,Scissor</title>
+</head>
+<body>
+    <style>
+.div2{
+    width: 'auto';
+    height: '2px';
+}
+#heading{
+text-align: center;
+    color: #48378f;
+
+}
+#maincnt button {
+    width: 100px;
+    height: 40px;
+    border-radius: 16px;
+font-size: medium;
+font-weight: bold;
+    color: cadetblue;
+}
+
+#maincnt  {
+    text-align: center;
+}
+#box{
+
+background: linear-gradient(90deg, rgba(52, 154, 194, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+    height: 200px;
+}
+  .class{
+    color:'#46257a';
+  }
+  
+#Results {
+color:   #237a26;
+}
+
+  </style>
+    <div id ='box'>
+<div id = 'heading'>
+    <h2 class="text"> Rock , Paper ,Scissor</h2>
+</div >
+<div id="maincnt">
+<h1 id="Results"></h1>
+<button id="Rock">Rock</button>
+<button id="Paper">Paper</button>
+<button id="Scissor">Scissor</button>
+
+<h3 id="Results"></h3>
+</div>
+<div class="div2">
+    
+</div>
+<div>
+
+
+</div>
+</div>
+</body>
+<script>
+const Rock = document.getElementById("Rock");
+const Paper = document.getElementById("Paper");
+const Scissor = document.getElementById("Scissor");
+const Results = document.getElementById("Results");
+
+function computerChoices() {
+    let Choices = ['Rock', 'Paper', 'Scissor'];
+    return Choices[Math.floor(Math.random() * 3)];
+}
+
+function playGame(playerChoice) {
+    let computer = computerChoices();
+
+    if (playerChoice === computer) {
+        Results.innerHTML = `Draw! Both chose ${playerChoice}`;
+    } 
+    else if (
+        (playerChoice === "Rock" && computer === "Scissor") ||
+        (playerChoice === "Paper" && computer === "Rock") ||
+        (playerChoice === "Scissor" && computer === "Paper")
+    ) {
+        Results.innerHTML = `You Win! ${playerChoice} beats ${computer}`;
+        
+    }
+    else {
+        Results.innerHTML = `You Lose! ${computer} beats ${playerChoice}`;
+    }
+}
+
+// Rock.onclick = () => playGame("Rock");
+// Paper.onclick = () => playGame("Paper");
+// Scissor.onclick = () => playGame("Scissor");
+Rock.addEventListener ('click',() => playGame("Rock"))
+Paper.addEventListener ('click',() => playGame("Paper"))
+Scissor.addEventListener ('click',() => playGame("Scissor"))
+
+
+// method two
+
+
+function computerChoices() {
+    let num = Math.floor(Math.random() * 3); 
+
+    if (num === 0) {
+        return "Rock";
+    } else if (num === 1) {
+        return "Paper";
+    } else {
+        return "Scissor";
+    }
+}
+function playGame(playerChoice) {
+
+    let computer = computerChoices();
+
+    if (playerChoice === computer) {
+      alert(  Results.innerHTML = `Draw! Both chose ${playerChoice}`);
+    } 
+    else if (playerChoice === "Rock") {
+        if (computer === "Scissor") {
+            Results.innerHTML = "Rock beats Scissor — You WIN!";
+        } else {
+         
+            Results.innerHTML = "Paper beats Rock — You LOSE!";
+        }
+    }
+    else if (playerChoice === "Paper") {
+        if (computer === "Rock") {
+            Results.innerHTML = "Paper beats Rock — You WIN!";
+        } else {
+            Results.innerHTML = "Scissor beats Paper — You LOSE!";
+        }
+    }
+    else if (playerChoice === "Scissor") {
+        if (computer === "Paper") {
+            Results.innerHTML = "Scissor beats Paper — You WIN!";
+        } else {
+            Results.innerHTML = "Rock beats Scissor — You LOSE!";
+        }
+    }
+}
+
+
+</script>
+
+
+</html> 
